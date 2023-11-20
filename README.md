@@ -6,12 +6,13 @@ Priority
 - OLS
 - Weighted OLS
 - Naive/corrected sigma
-- validate/test
+- Cross Validation (k-fold, LOO)
+- ANOVA
+- LASSO (l1), Ridge (l2) regression
+- Model information (betas, R^2, Confidence Intervals, Residuals, AIC, BIC, etc.) 
 
 
 Maybe
 - Alternative bases (sigmoid, gaussian, polynomial)
 - Dataset generator
-- k-fold
-- L1/L2/Lp regularization
 - SGD
