@@ -5,12 +5,12 @@
 Priority
 - OLS
 - Weighted OLS
-- Naive/corrected sigma
-- Cross Validation (k-fold, LOO)
 - ANOVA
+- Naive/corrected sigma
 - LASSO (l1), Ridge (l2) regression
-- Model information (betas, R^2, Confidence Intervals, Residuals, AIC, BIC, etc.) 
-
+- Cross Validation (k-fold, LOO)
+- Model summary (betas, R^2, Confidence Intervals, Residuals, AIC, BIC, etc.) 
+- Doc
 
 Maybe
 - Alternative bases (sigmoid, gaussian, polynomial)

@@ -10,7 +10,8 @@ setup(
     packages=['raanova'],
     extras_require={
         'dev': [
-            'unittest'
+            'numpy',
+            'matplotlib'
         ]
     }
 )
