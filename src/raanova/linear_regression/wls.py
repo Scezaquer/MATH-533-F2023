@@ -1,4 +1,4 @@
-from linear_regression import LinearRegression
+from .linear_regression import LinearRegression
 
 class WLS(LinearRegression):
     def __init__(self):
