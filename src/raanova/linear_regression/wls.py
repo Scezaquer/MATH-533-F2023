@@ -1,5 +1,6 @@
-from linear_regression import LinearRegression
+from .linear_regression import LinearRegression
 import numpy as np
+
 
 class WLS(LinearRegression):
     
