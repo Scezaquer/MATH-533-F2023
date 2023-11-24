@@ -14,9 +14,7 @@ class LinearRegression:
         self.__hat: np.ndarray[float] = 0
         self.__annihilator = 0
 
-    def fit(
-        self, X: np.ndarray[float], Y: np.ndarray[float]
-        ) -> np.ndarray[float]:
+    def fit(self, X: np.ndarray[float], Y: np.ndarray[float]) -> np.ndarray[float]:
         pass
 
     def predict(self, X: np.ndarray[float]) -> np.ndarray[float]:

@@ -17,5 +17,3 @@ Maybe
 - Dataset generator
 - SGD
 
-test mila
-helloooo
