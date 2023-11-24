@@ -15,6 +15,6 @@ class OLS(LinearRegression):
         X = np.column_stack((np.ones(X.shape[0]), X))
 
         # Calculate the coefficients using the normal equation
-        self.__beta = np.linalg.inv(X.T @ X) @ X.T @ Y
+        self._betas = np.atleast_2d(np.linalg.inv(X.T @ X) @ X.T @ Y)
 
-        return self.__beta
+        return self._betas
