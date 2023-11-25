@@ -7,14 +7,15 @@ class WLS(LinearRegression):
     def __init__(self):
         super().__init__()
 
-    def fit(self, X: list[list[float]], Y: list[float], W: list[list[float]] = None, intercept: bool = True) -> list[float]:
+    def fit(self, X: list[list[float]], Y: list[float], W: list[list[float]], intercept: bool = True) -> list[float]:
         
         if intercept == True:
             #add col for intercept
             X = np.column_stack((np.ones(X.shape[0]), X))
         
         #define default weight matrix if none entered
-        if W == None:
+        #commented whole thing out bc we are not doing this in here
+        """if W == None:
             #to get default W, need var of sample residuals
             
             #need to calc variance sample residuals
@@ -37,7 +38,7 @@ class WLS(LinearRegression):
             W.dtype = np.float32
             for d in range(0,len(W)):
                 W[d][d] = 1/(sample_res[len(X[0])-1][d]**2)
-                
+        """     
         beta_hat = np.atleast_2d(np.linalg.inv(X.T @ W @ X) @ X.T @ W @ Y)
         self._betas = beta_hat
         
