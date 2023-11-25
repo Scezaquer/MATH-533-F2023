@@ -1,5 +1,7 @@
 from .linear_regression import LinearRegression
+from .mila_helpers import *
 import numpy as np
+
 
 
 class WLS(LinearRegression):
@@ -39,9 +41,32 @@ class WLS(LinearRegression):
             for d in range(0,len(W)):
                 W[d][d] = 1/(sample_res[len(X[0])-1][d]**2)
         """     
-        beta_hat = np.atleast_2d(np.linalg.inv(X.T @ W @ X) @ X.T @ W @ Y)
-        self._betas = beta_hat
+        b = np.atleast_2d(np.linalg.inv(X.T @ W @ X) @ X.T @ W @ Y)
+        res = get_residuals(X, Y)
         
-        return beta_hat
+        n = len(X)
+        p = len(X[0])
+        
+        #get sigma naive for r^2
+        var = get_var(n, p, res)
+        #hat, ann matrices
+        h_a = get_hat_ann_matrix(X)
+        
+        #aic, bic
+        aic_bic = get_OLS_AIC_BIC(Y, super().predict(Y), n, p)
+        
+        self._betas = b
+        self._residuals = res
+        self._rsquared = get_r_squared(n, Y, var[0])
+        self._conf_interval = get_OLS_CI(b, var[1], X, n, p)
+        self._sigma_naive = var[0]
+        self._sigma_corrected = var[1]
+        self._AIC = aic_bic[0]
+        self._BIC = aic_bic[1]
+        self._hat = h_a[0]
+        self._annihilator = h_a[1]
+        
+        
+        return b
         
         
