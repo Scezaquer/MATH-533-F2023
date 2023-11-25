@@ -15,7 +15,8 @@ class LinearRegression:
         self._hat: npt.NDArray[np.float32] = 0
         self._annihilator: npt.NDArray[np.float32] = 0
 
-    def predict(self, X: npt.NDArray[np.float32]) -> npt.NDArray[np.float32]:
+    def predict(self, X: npt.NDArray[np.float32], intercept: bool = True
+                ) -> npt.NDArray[np.float32]:
         X = np.column_stack((np.ones(X.shape[0]), X))
         return X @ self._betas
 
@@ -25,8 +26,8 @@ class LinearRegression:
         print(f"R squared:          {round(self._rsquared, 3):>10}")
         print(f"Sigma naive:        {round(self._sigma_naive, 3):>10}")
         print(f"Sigma corrected:    {round(self._sigma_corrected, 3):>10}")
-        print(f"AIC: {round(self._AIC, 3):>10}")
-        print(f"BIC: {round(self._BIC, 3):>10}")
+        print(f"AIC:                {round(self._AIC, 3):>10}")
+        print(f"BIC:                {round(self._BIC, 3):>10}")
 
     @property
     def residuals(self):

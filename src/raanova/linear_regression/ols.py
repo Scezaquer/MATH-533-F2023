@@ -8,11 +8,14 @@ class OLS(LinearRegression):
         super().__init__()
 
     def fit(self,
-            X: npt.NDArray[np.float32], Y: npt.NDArray[np.float32]
-            ) -> npt.NDArray[np.float32]:
+            X: npt.NDArray[np.float32], Y: npt.NDArray[np.float32],
+            intercept: bool = True) -> npt.NDArray[np.float32]:
+
+        # TODO: update the attributes
 
         # Add a column of ones to the input data for the intercept term
-        X = np.column_stack((np.ones(X.shape[0]), X))
+        if intercept:
+            X = np.column_stack((np.ones(X.shape[0]), X))
 
         # Calculate the coefficients using the normal equation
         self._betas = np.atleast_2d(np.linalg.inv(X.T @ X) @ X.T @ Y)
