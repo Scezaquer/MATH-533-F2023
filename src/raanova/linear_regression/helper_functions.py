@@ -34,12 +34,19 @@ def get_r_squared(
     return 1 - (n * sigma_naive) / (np.linalg.norm(y_mean_vectorize)**2)
 
 
-def get_hat_ann_matrix(
+def get_OLS_hat_ann_matrix(
         X: npt.NDArray[np.float32]
         ) -> list[npt.NDArray[np.float32]]:
     hat_mtx = X @ np.linalg.inv(X.T @ X) @ X.T
     return [hat_mtx, np.identity(X.shape[0]) - hat_mtx]
 
+
+def get_ridge_hat_ann_matrix(
+        X: npt.NDArray[np.float32],
+        penalty: np.float32,
+        ) -> list[npt.NDArray[np.float32]]:
+    hat_mtx = X @ np.linalg.inv(X.T @ X + penalty*np.identity(X.shape[1])) @ X.T
+    return [hat_mtx, np.identity(X.shape[0]) - hat_mtx]
 
 def get_OLS_CI(
         betas: npt.NDArray[np.float32],
