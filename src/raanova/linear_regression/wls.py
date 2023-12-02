@@ -42,27 +42,27 @@ class WLS(LinearRegression):
                 W[d][d] = 1/(sample_res[len(X[0])-1][d]**2)
         """     
         b = np.atleast_2d(np.linalg.inv(X.T @ W @ X) @ X.T @ W @ Y)
-        res = get_residuals(X, Y)
+        res = Y - (X @ b)
         
         n = len(X)
         p = len(X[0])
         
         #get sigma naive for r^2
-        var = get_var(n, p, res)
+        var = get_variance(n, p, res)
         #hat, ann matrices
         h_a = get_hat_ann_matrix(X)
         
         #aic, bic
-        aic_bic = get_OLS_AIC_BIC(Y, super().predict(Y), n, p)
+        #aic_bic = get_OLS_AIC_BIC(Y, super().predict(Y), n, p)
         
         self._betas = b
         self._residuals = res
         self._rsquared = get_r_squared(n, Y, var[0])
-        self._conf_interval = get_OLS_CI(b, var[1], X, n, p)
+        #self._conf_interval = get_OLS_CI(b, var[1], X, n, p)
         self._sigma_naive = var[0]
         self._sigma_corrected = var[1]
-        self._AIC = aic_bic[0]
-        self._BIC = aic_bic[1]
+        #self._AIC = aic_bic[0]
+        #self._BIC = aic_bic[1]
         self._hat = h_a[0]
         self._annihilator = h_a[1]
         

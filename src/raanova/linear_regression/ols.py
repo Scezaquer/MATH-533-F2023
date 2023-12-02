@@ -16,5 +16,5 @@ class OLS(LinearRegression):
 
         # Calculate the coefficients using the normal equation
         self._betas = np.atleast_2d(np.linalg.inv(X.T @ X) @ X.T @ Y)
-
+        
         return self._betas

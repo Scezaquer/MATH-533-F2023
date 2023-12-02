@@ -20,3 +20,4 @@ class TestOLS(unittest.TestCase):
         X = np.random.random(size=10)*100
         y_hat = ols.predict(X)
         print(y_hat)
+        ols.summary()
