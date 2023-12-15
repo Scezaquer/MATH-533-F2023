@@ -74,6 +74,14 @@ def get_OLS_AIC_BIC(
     p: int
         ) -> list[float, float]:
     return [
-        n * np.log(MSE(Y_true, Y_pred)) + 2 * p,
-        n * np.log(MSE(Y_true, Y_pred)) + p * np.log(n)
+        -n * np.log(MSE(Y_true, Y_pred)) + 2 * p,
+        -n * np.log(MSE(Y_true, Y_pred)) + p * np.log(n)
         ]
+
+
+def CI_pretty_print(CI, num_beta):
+    print(f"Coefficients      Confidence Interval")
+    for j in range(num_beta):
+        lower_j = round(CI[0][j,0], 5)
+        upper_j = round(CI[1][j,0], 5)
+        print(f"beta_{j}            [{lower_j}; {upper_j}]")

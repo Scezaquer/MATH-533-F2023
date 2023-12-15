@@ -1,5 +1,6 @@
 import unittest
 from src.raanova.linear_regression.ridge import Ridge
+from src.raanova.linear_regression.helper_functions import CI_pretty_print
 import numpy as np
 
 
@@ -12,7 +13,8 @@ class TestRidge(unittest.TestCase):
         m1 = Ridge()
         betas = m1.fit(X, Y, 0.01)
         print(f"betas: {m1._betas}")
-        print(f"residuals: {m1._residuals[:10, :]}")
-        print(f"r_squared: {m1._rsquared}")
-        print(f"sigma_naive: {m1._sigma_naive}")
-        print(f"sigma_corr: {m1._sigma_corrected}")
+        # print(f"residuals: {m1._residuals[:10, :]}")
+        # print(f"r_squared: {m1._rsquared}")
+        # print(f"sigma_naive: {m1._sigma_naive}")
+        # print(f"sigma_corr: {m1._sigma_corrected}")
+        CI_pretty_print(m1._conf_interval, len(m1._betas))

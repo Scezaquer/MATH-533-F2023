@@ -3,7 +3,7 @@ import numpy.typing as npt
 
 from .linear_regression import LinearRegression
 from .helper_functions import get_residuals, get_variance, get_r_squared
-from .helper_functions import get_ridge_hat_ann_matrix
+from .helper_functions import get_ridge_hat_ann_matrix, get_OLS_CI
 
 
 class Ridge(LinearRegression):
@@ -22,6 +22,7 @@ class Ridge(LinearRegression):
         self._sigma_naive, self._sigma_corrected = get_variance(n, p, self._residuals)
         self._rsquared = get_r_squared(n, Y, self._sigma_naive)
         self._hat, self._annihilator = get_ridge_hat_ann_matrix(X, self._penalty)
+        self._conf_interval = get_OLS_CI(self._betas, self._sigma_corrected, X, n, p)
 
         return self._betas
 
