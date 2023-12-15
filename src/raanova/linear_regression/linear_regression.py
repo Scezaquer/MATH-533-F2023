@@ -12,8 +12,12 @@ class LinearRegression:
         self._sigma_naive: float = 0
         self._sigma_corrected: float = 0
         self._using_ols: bool = False
-        
-        
+        self._conf_interval: npt.NDArray[np.float32] = 0
+        self._AIC = 0
+        self._BIC = 0
+        self._hat: npt.NDArray[np.float32] = 0
+        self._annihilator = 0
+
         #self._n: int = 0  #sample size
         #self._p: int = 0  #num of covs
         #self._X: npt.NDArray[np.float32] = 0
