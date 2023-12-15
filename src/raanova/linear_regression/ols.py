@@ -21,7 +21,8 @@ class OLS(LinearRegression):
         if intercept == True:
             #add col for intercept
             X = np.column_stack((np.ones(X.shape[0]), X))
-
+    
+        self._using_ols = True
         # Calculate the coefficients using the normal equation
         b = np.atleast_2d(np.linalg.inv(X.T @ X) @ X.T @ Y)
         self._betas = b

@@ -11,6 +11,7 @@ class LinearRegression:
         self._betas: npt.NDArray[np.float32] = 0
         self._sigma_naive: float = 0
         self._sigma_corrected: float = 0
+        self._using_ols: bool = False
         
         
         #self._n: int = 0  #sample size
@@ -54,7 +55,7 @@ class LinearRegression:
         
         beta_i = []
         for i in range(0, len(self._betas)):
-            beta_i.append('beta_'+str(i))
+            beta_i.append('beta_' + str(i))
         
         
         print(f"{'Residuals:' : <10}\n"
@@ -70,10 +71,16 @@ class LinearRegression:
         #print('\n\n'+'Residual standard error: ' + str(res_std_error[0]) 
         #      + '\n R-squared: ' + str(self._rsquared))
         
-        CI_pretty_print(self._conf_interval, len(self._betas))
+        if self._using_ols == True:
+            CI_pretty_print(self._conf_interval, len(self._betas))
+        
         print('\n\nR-squared: ' + str(round(self._rsquared, 5)) 
               +'\nNaive estimator: ' + str(round(self._sigma_naive, 5))
               + '\nCorrected naive estimator: ' + str(round(self._sigma_corrected, 5)))
+        
+        if self._using_ols == True:
+            print('\nAIC: ' + str(round(self._AIC, 5))
+                  + '\nBIC: ' + str(round(self._BIC, 5)))
         
     #obviously didnt add a getter for the betas since theyre returned by the fit() fcn
     @property

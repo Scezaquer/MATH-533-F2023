@@ -16,11 +16,12 @@ class TestWLS(unittest.TestCase):
         W = np.diag(np.full(len(X),1))
         beta = wls.fit(X, Y, W)
 
-        print(f"betas:\n{wls._betas}")
-        print(f"res: {wls._residuals[:10, :]}")
-        print(f"r_sqrd: {wls._rsquared}")
-        print(f"naive: {wls._sigma_naive}")
-        print(f"corrected: {wls._sigma_corrected}")
+        #print(f"betas:\n{wls._betas}")
+        #print(f"res: {wls._residuals[:10, :]}")
+        #print(f"r_sqrd: {wls._rsquared}")
+        #print(f"naive: {wls._sigma_naive}")
+        #print(f"corrected: {wls._sigma_corrected}")
+        wls.summary()
 
         
         

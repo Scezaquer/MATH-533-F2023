@@ -1,5 +1,6 @@
 import unittest
 from raanova.linear_regression.ols import OLS
+from raanova.linear_regression.wls import WLS
 import numpy as np
 
 
@@ -25,4 +26,5 @@ class TestOLS(unittest.TestCase):
         print(f"bic:\n{ols._BIC}")
         
         ols.summary()
+
         
