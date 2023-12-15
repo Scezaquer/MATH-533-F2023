@@ -17,4 +17,3 @@ class TestRidge(unittest.TestCase):
         # print(f"r_squared: {m1._rsquared}")
         # print(f"sigma_naive: {m1._sigma_naive}")
         # print(f"sigma_corr: {m1._sigma_corrected}")
-        CI_pretty_print(m1._conf_interval, len(m1._betas))
