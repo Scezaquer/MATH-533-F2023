@@ -26,5 +26,3 @@ class TestOLS(unittest.TestCase):
         print(f"bic:\n{ols._BIC}")
         
         ols.summary()
-
-        

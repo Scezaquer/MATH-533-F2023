@@ -12,7 +12,7 @@ class OLS(LinearRegression):
         self._BIC = 0
         self._hat: npt.NDArray[np.float32] = 0
         self._annihilator = 0
-        
+
 
     def fit(self,
             X: npt.NDArray[np.float32], Y: npt.NDArray[np.float32],
