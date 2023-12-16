@@ -45,8 +45,10 @@ def get_ridge_hat_ann_matrix(
         X: npt.NDArray[np.float32],
         penalty: np.float32,
         ) -> list[npt.NDArray[np.float32]]:
-    hat_mtx = X @ np.linalg.inv(X.T @ X + penalty*np.identity(X.shape[1])) @ X.T
+    hat_mtx = \
+        X @ np.linalg.inv(X.T @ X + penalty*np.identity(X.shape[1])) @ X.T
     return [hat_mtx, np.identity(X.shape[0]) - hat_mtx]
+
 
 def get_OLS_CI(
         betas: npt.NDArray[np.float32],
@@ -80,8 +82,8 @@ def get_OLS_AIC_BIC(
 
 
 def CI_pretty_print(CI, num_beta):
-    print(f"Coefficients      Confidence Interval")
+    print("Coefficients      Confidence Interval")
     for j in range(num_beta):
-        lower_j = round(CI[0][j,0], 5)
-        upper_j = round(CI[1][j,0], 5)
+        lower_j = round(CI[0][j, 0], 5)
+        upper_j = round(CI[1][j, 0], 5)
         print(f"beta_{j}            [{lower_j}; {upper_j}]")
