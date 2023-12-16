@@ -8,7 +8,6 @@ class LinearRegression:
         self._residuals: npt.NDArray[np.float32] = 0
         self._rsquared: float = 0
         self._betas: npt.NDArray[np.float32] = 0
-        self._conf_interval: npt.NDArray[np.float32] = 0
         self._sigma_naive: float = 0
         self._sigma_corrected: float = 0
         self._using_ols: bool = False
@@ -23,9 +22,10 @@ class LinearRegression:
        ) -> npt.NDArray[np.float32]:
         pass
 
-    def predict(self, X: npt.NDArray[np.float32]) -> npt.NDArray[np.float32]:
-        # TODO: why is this printing something?
-        X = np.column_stack((np.ones(X.shape[0]), X))
+    def predict(self, X: npt.NDArray[np.float32], intercept: bool = True
+                ) -> npt.NDArray[np.float32]:
+        if intercept:
+            X = np.column_stack((np.ones(X.shape[0]), X))
         return X @ self._betas
 
     def summary(self) -> None:

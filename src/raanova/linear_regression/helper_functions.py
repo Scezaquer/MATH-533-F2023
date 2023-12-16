@@ -63,7 +63,7 @@ def get_OLS_CI(
 
     range = np.full((p, 1), t_alpha) \
         * np.sqrt(sigma_corr) \
-        * np.linalg.inv(np.diagonal(X.T @ X) * np.identity(p))
+        * np.linalg.inv(np.diagonal(X.T @ X) * np.identity(p))**0.5
     range = np.diag(range).reshape(-1, 1)
 
     return [betas - range, betas + range]

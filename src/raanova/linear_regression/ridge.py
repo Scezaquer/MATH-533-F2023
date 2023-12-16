@@ -1,5 +1,4 @@
 import numpy as np
-import numpy.typing as npt
 
 from .linear_regression import LinearRegression
 from .helper_functions import get_residuals, get_variance, get_r_squared
@@ -30,6 +29,3 @@ class Ridge(LinearRegression):
             )
 
         return self._betas
-
-    def predict(self, X: npt.NDArray[np.float32]) -> npt.NDArray[np.float32]:
-        pass

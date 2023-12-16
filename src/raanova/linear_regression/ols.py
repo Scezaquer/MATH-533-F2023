@@ -17,7 +17,8 @@ class OLS(LinearRegression):
 
     def fit(self,
             X: npt.NDArray[np.float32], Y: npt.NDArray[np.float32],
-            intercept: bool = True) -> npt.NDArray[np.float32]:
+            intercept: bool = True, alpha: float = 0.05
+            ) -> npt.NDArray[np.float32]:
 
         if intercept is True:
             # add col for intercept
@@ -42,7 +43,8 @@ class OLS(LinearRegression):
         self._annihilator = np.identity(X.shape[0]) - self._hat
 
         aic_bic = get_OLS_AIC_BIC(Y, X @ b, n, p)
-        self._conf_interval = get_OLS_CI(b, self._sigma_corrected, X, n, p)
+        self._conf_interval = get_OLS_CI(
+            b, self._sigma_corrected, X, n, p, alpha)
         self._AIC = aic_bic[0]
         self._BIC = aic_bic[1]
 
@@ -63,3 +65,7 @@ class OLS(LinearRegression):
     @property
     def annihilator(self):
         return self._annihilator
+
+    @property
+    def conf_interval(self):
+        return self._conf_interval
