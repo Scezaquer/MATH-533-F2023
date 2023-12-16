@@ -9,6 +9,7 @@ class LinearRegression:
         self._residuals: npt.NDArray[np.float32] = 0
         self._rsquared: float = 0
         self._betas: npt.NDArray[np.float32] = 0
+        self._conf_interval: npt.NDArray[np.float32] = 0
         self._sigma_naive: float = 0
         self._sigma_corrected: float = 0
         self._using_ols: bool = False
