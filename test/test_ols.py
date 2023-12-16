@@ -10,9 +10,6 @@ class TestOLS(unittest.TestCase):
         e = np.random.normal(0, 0.1, (100,1))
         Y = (0.5 + 1.0*X[:,0] + 1.0*X[:,1]+1.0*X[:,2]).reshape(-1,1)+e
 
-        #X = np.atleast_2d(X).T
-        #Y = np.atleast_2d(Y).T
-
         ols = OLS()
         beta = ols.fit(X, Y)
 
